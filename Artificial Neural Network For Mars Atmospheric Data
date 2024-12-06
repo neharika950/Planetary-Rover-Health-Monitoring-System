@@ -1,0 +1,70 @@
+% Load the Mars Weather dataset
+data = readtable('C:\Users\VAISHNAVI\Downloads\marsWeather.csv');
+
+% Display the column names to confirm available fields
+disp(data.Properties.VariableNames);
+
+% Adjust based on available columns
+% For example, if we want to predict 'pressure' based on 'sol', 'min_temp', and 'max_temp':
+inputData = [data.min_temp ,data.max_temp];
+targetData = data.pressure;  % Example output variable; replace as needed
+
+% Normalize the input and target data
+inputData = normalize(inputData, 'range', [0 1]);
+targetData = normalize(targetData, 'range', [0 1]);
+
+% Split the data into training, validation, and testing sets
+trainRatio = 0.7;
+valRatio = 0.15;
+testRatio = 0.15;
+[trainInd, valInd, testInd] = dividerand(size(inputData, 1), trainRatio, valRatio, testRatio);
+
+trainInputs = inputData(trainInd, :)';
+trainTargets = targetData(trainInd)';
+valInputs = inputData(valInd, :)';
+valTargets = targetData(valInd)';
+testInputs = inputData(testInd, :)';
+testTargets = targetData(testInd)';
+
+% Set up the ANN with one hidden layer of 10 neurons
+hiddenLayerSize = 10;
+net = fitnet(hiddenLayerSize);
+
+% Configure the ANN to use the divided dataset indices
+net.divideFcn = 'divideind';
+net.divideParam.trainInd = trainInd;
+net.divideParam.valInd = valInd;
+net.divideParam.testInd = testInd;
+
+% Train the network
+[net, tr] = train(net, trainInputs, trainTargets);
+
+% Test the network
+testOutputs = net(testInputs);
+
+% Plot regression between predicted and actual values
+figure;
+plotregression(testTargets, testOutputs);
+title('Regression Analysis of ANN Predictions for Pressure');
+
+% Plot training performance
+figure;
+plotperform(tr);
+title('Training Performance of the Neural Network');
+
+% Prediction error plot (Residuals)
+predictionError = testTargets - testOutputs;
+figure;
+plot(predictionError);
+title('Prediction Error (Residuals) for Pressure Prediction');
+
+% Plot predicted vs. actual values
+figure;
+plot(testTargets, 'b');
+hold on;
+plot(testOutputs, 'r--');
+legend('Actual Pressure', 'Predicted Pressure');
+title('Comparison of Actual vs Predicted Pressure');
+xlabel('Sample');
+ylabel('Normalized Pressure');
+hold off;
