@@ -2,21 +2,21 @@ This comprehensive research combines fuzzy logic and artificial neural networks 
 
 Key highlights include:
 
-1. Fuzzy Logic for Environmental Assessment**:  
+1. Fuzzy Logic for Environmental Assessment:  
    - Inputs include temperature, sensor functionality, and communication status.  
    - Membership functions and rules assess environmental risks.  
    - Integration with Simulink demonstrates real-time application.
 
-2. Fuzzy Logic for Component Monitoring**:  
+2. Fuzzy Logic for Component Monitoring:  
    - Parameters include motor performance, wheel condition, and temperature.  
    - The system evaluates the rover's readiness and adaptability.
 
-3. ANN for Battery RUL Prediction**:  
+3. ANN for Battery RUL Prediction:  
    - Uses features like discharge time and voltage decrement.  
    - A single hidden layer with 10 neurons ensures robust learning.  
    - Achieved a high correlation (R > 0.97) between predicted and actual RUL.
 
-4. Performance Evaluation**:  
+4. Performance Evaluation:  
    - Regression analysis and prediction accuracy validate the ANN model.  
    - Integration of ANN and fuzzy logic enables proactive maintenance.
 
