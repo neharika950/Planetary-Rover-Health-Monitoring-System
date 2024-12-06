@@ -1,0 +1,47 @@
+Effective Mars rover operations rely on accurately assessing environmental and system
+performance parameters to ensure reliability and mission success in the harsh Martian environment.
+Fuzzy logic provides a robust framework to handle the uncertainties and imprecise data associated with these conditions.
+This section outlines the design of a fuzzy logic system, including membership functions for key environmental and rover component parameters, to evaluate the rover’s operational health and identify potential risks.
+By integrating these parameters, the system ensures informed decision-making to optimize performance and extend mission longevity.
+
+Fuzzy Logic Design and Membership Functions
+The following membership functions are defined for evaluating the rover's environmental and operational conditions:
+
+Environmental and System Performance Parameters
+The following membership functions are designed to assess environmental and system performance parameters, focusing on temperature, sensor functionality, and communication status to ensure optimal rover operations.
+
+Temperature
+•	Low (L): [0, 0, 15] — Low temperatures may cause stress, affecting battery and sensor performance.
+•	Normal (N): [10, 25, 35] — Ideal temperature range for optimal rover performance.
+•	High (H): [30, 50, 100] — High temperatures risk overheating and damage to electronics.
+
+  Sensor Functionality
+•	Malfunctioning (MF): [0, 0, 40] — Sensor failure or incorrect data.
+•	Functional (F): [30, 70, 100] — Sensor operating normally.
+•	Fully Functional (FF): [90, 100, 100] — Sensor performing at peak efficiency.
+
+ Communication Status
+•	Poor (P): [0, 0, 40] — Unreliable communication.
+•	Fair (F): [30, 60, 80] — Occasional communication issues.
+•	Good (G): [70, 100, 100] — Strong and stable communication.
+
+Rover Component Parameters
+The following membership functions evaluate the condition of the rover's key components:
+
+Battery Health
+•	Low (L): [0, 0, 20] — severely degraded battery health or poor performance.
+•	Medium (M): [15, 50, 85] — Represents average or functional battery health
+•	High (H): [30, 50, 100] — Represents excellent battery health.
+•	
+
+Motor Performance
+•	Weak (W): [0, 0, 30] — Low power output, possibly due to wear or failure.
+•	Normal (N): [20, 60, 90] — Standard motor performance.
+•	Strong (S): [80, 100, 100] — High efficiency and optimal performance.
+
+              Wheel Condition
+•	Poor (P): [0, 0, 30] — Severe wear or damage, affecting movement.
+•	Fair (F): [20, 50, 80] — Moderate wear, may impact mobility.
+•	Good (G): [70, 100, 100] — Optimal condition for efficient movement.
+
+
